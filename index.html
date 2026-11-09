@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10171d">
+  <title>Bird Buddies — Fort Fight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Bird Buddies home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M8 21c0-7 5-12 12-12 3 0 5 1 7 3l5-1-2 5c1 2 1 3 1 5 0 7-5 11-12 11S8 29 8 21Z"/><circle cx="23" cy="17" r="1.7"/><path d="m9 22-6 2 6 3M17 31l-2 4m9-4 2 4"/></svg></span>
+        <span class="brand-name">bird<span>buddies</span></span>
+      </a>
+      <div class="level-status"><span class="live-dot"></span><span id="phase-label">BUILD PHASE</span><span class="status-divider"></span><span id="level-label">LEVEL 01</span></div>
+      <button class="sound-toggle" id="sound-toggle" aria-label="Toggle sound" title="Toggle sound"><span id="sound-icon">♪</span><span class="sound-word">SOUND ON</span></button>
+    </header>
+
+    <main class="game-shell">
+      <section class="stage" id="stage" aria-label="Game field">
+        <canvas id="game" aria-label="Build a fort and launch birds at it"></canvas>
+        <div class="stage-chip left-chip"><span class="chip-icon">✦</span><span id="stage-hint">YOUR TURN TO BUILD</span></div>
+        <div class="objective" id="objective"><span class="objective-icon">◎</span><span id="objective-text">Knock the pigs off the fort!</span></div>
+        <div class="turn-banner" id="turn-banner" aria-live="polite"></div>
+        <div class="toast" id="toast" role="status"></div>
+        <div class="mobile-tip" id="mobile-tip">Choose a block, then tap the field to place it.</div>
+      </section>
+
+      <section class="control-deck" id="control-deck">
+        <div class="deck-left">
+          <div class="deck-heading"><span class="deck-kicker" id="deck-kicker">BUILD YOUR FORT</span><span class="deck-sub" id="deck-sub">Select a piece · tap the field to place</span></div>
+          <div class="materials" id="materials" aria-label="Building materials">
+            <button class="material selected" data-material="wood" aria-label="Select wood plank"><span class="material-swatch wood-swatch"><i></i></span><span class="material-name">WOOD</span><span class="material-count" id="count-wood">8</span></button>
+            <button class="material" data-material="stone" aria-label="Select stone block"><span class="material-swatch stone-swatch"><i></i></span><span class="material-name">STONE</span><span class="material-count" id="count-stone">4</span></button>
+            <button class="material" data-material="glass" aria-label="Select glass beam"><span class="material-swatch glass-swatch"><i></i></span><span class="material-name">GLASS</span><span class="material-count" id="count-glass">4</span></button>
+            <button class="rotate-button" id="rotate-button" aria-label="Rotate selected piece"><span>↻</span><small>ROTATE</small></button>
+          </div>
+        </div>
+        <div class="deck-right">
+          <div class="birds-info" id="birds-info"><span class="bird-dots" id="bird-dots"></span><span id="birds-label">4 SHOTS</span></div>
+          <button class="action-button" id="action-button"><span id="action-label">DONE BUILDING</span><span class="button-arrow">→</span></button>
+          <button class="reset-button" id="reset-button" aria-label="Restart level" title="Restart level">↺</button>
+        </div>
+      </section>
+      <footer class="footnote"><span><kbd>R</kbd> rotate <span class="foot-sep">·</span> <kbd>⌫</kbd> undo last piece</span><span class="made-note">A little friendly destruction <span>♥</span></span></footer>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="modal-backdrop" hidden><div class="result-card"><div class="result-confetti">✦ &nbsp; ✹ &nbsp; ✦</div><div class="result-eyebrow" id="result-eyebrow">NICE ONE!</div><h1 id="result-title">Tower toppled.</h1><p id="result-copy">Your friend finally got you.</p><div class="result-actions"><button class="secondary-button" id="replay-button">PLAY AGAIN</button><button class="action-button" id="next-button">NEXT LEVEL <span class="button-arrow">→</span></button></div><div class="meme-caption" id="meme-caption">♪ Arre wah! Kya baat hai! ♪</div></div></div>
+  <script src="vendor/matter.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
